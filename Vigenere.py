@@ -1,9 +1,9 @@
 #two functions, one to encrypt using a Vigenère cipher, the other to decrypt.
-#only supports lowercase letters and numbers at the moment, will change that soon
+#as well as a quick n dirty main function
 #https://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher to learn more about this sort of cipher
 
 def vig_cipher(message, keyword):
-    alphabet = 'abcdefghijklmnopqrstuvwxyz0123456789'
+    alphabet = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789 '
     #remove spaces and special chars
     new_message = ''.join(filter(str.isalnum, message))
     #only want lowercase letters
@@ -41,7 +41,7 @@ def vig_cipher(message, keyword):
     return encrypted_message
 
 def decrypt_vig(message, keyword):
-    alphabet = 'abcdefghijklmnopqrstuvwxyz0123456789'
+    alphabet = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789 '
     #remove spaces and special chars
     new_message = ''.join(filter(str.isalnum, message))
     #only want lowercase letters
