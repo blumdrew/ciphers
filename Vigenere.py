@@ -4,12 +4,11 @@
 
 def vig_cipher(message, keyword):
     alphabet = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789 '
-    #remove spaces and special chars
-    new_message = ''.join(filter(str.isalnum, message))
-    #only want lowercase letters
-    message = new_message.lower()
+    #ensure message only has alphanum and spaces
+    message = ''.join(item for item in message if item in alphabet)
+    
+    #table contains (0-63),(1-63,0),(2-63,0,1), etc.
     row = [index for index in range(len(alphabet))]
-    #table makes a square of rows, each one shifted by n places
     table = [row[x:] + row[:x] for x in range(len(alphabet))]
     
     #to encode, need full key
@@ -42,10 +41,9 @@ def vig_cipher(message, keyword):
 
 def decrypt_vig(message, keyword):
     alphabet = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789 '
-    #remove spaces and special chars
-    new_message = ''.join(filter(str.isalnum, message))
-    #only want lowercase letters
-    message = new_message.lower()
+    #ensure message only has alphanum and spaces
+    message = ''.join(item for item in message if item in alphabet)
+    
     row = [index for index in range(len(alphabet))]
     table = [row[x:] + row[:x] for x in range(len(alphabet))]
 
@@ -78,9 +76,8 @@ def decrypt_vig(message, keyword):
         decrypt_message += letter
         current_index += 1
     return decrypt_message
-    
-    
- def main():
+
+def main():
     #quick main function to encode a message
     message = input('Enter the message you wish to encode: ')
     key = input('Enter your keyword: ')
@@ -90,3 +87,4 @@ def decrypt_vig(message, keyword):
 
 if __name__ == '__main__':
     main()
+
