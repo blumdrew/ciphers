@@ -23,7 +23,7 @@ def encode(message, key):
             new_key = ''
             for item in key_list:
                 #shifts the key over n chars
-                key_item_index = ascii_chars.find(item) + index
+                key_item_index = (ascii_chars.find(item) + index) % len(ascii_chars)
                 new_key += ascii_chars[key_item_index]
             #add on key to total key
             full_key += new_key
@@ -68,7 +68,7 @@ def decode(message, key):
             new_key = ''
             for item in key_list:
                 #shifts the key over n chars
-                key_item_index = ascii_chars.find(item) + index
+                key_item_index = (ascii_chars.find(item) + index) % len(ascii_chars)
                 new_key += ascii_chars[key_item_index]
             #add on key to total key
             full_key += new_key
